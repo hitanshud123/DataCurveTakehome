@@ -1,6 +1,7 @@
 # DataCurve - Python Code Execution Site
 
-App link: = https://datacurve-takehome-hitanshu.vercel.app/
+App link: https://datacurve-takehome-hitanshu.vercel.app/
+
 Backend API link: https://datacurvetakehome-production.up.railway.app/docs#
 
 ## Usage
