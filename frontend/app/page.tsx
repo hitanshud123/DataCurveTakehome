@@ -44,18 +44,12 @@ const Home: React.FC = () => {
       } else {
         setOutput(res.stdout)
       }
-    } catch {
-      alert("Failed to Submit Code")
-      setOutput(prevOutput)
-    }
-
-    try {
       await submitCode(code, output)
       alert("Code Submitted!!")
     } catch {
       alert("Failed to Submit Code")
+      setOutput(prevOutput)
     }
-
   }
 
   return (
