@@ -35,7 +35,6 @@ const Home: React.FC = () => {
   };
 
   const handleSubmit = async () => {
-    const prevOutput = output;
     setOutput("Running...");
     try {
       const res = await runCode(code);
@@ -44,12 +43,12 @@ const Home: React.FC = () => {
         alert("Code Has Errors");
       } else {
         setOutput(res.stdout);
-        await submitCode(code, output);
+        await submitCode(code, res.stdout);
         alert("Code Submitted!!");
       }
     } catch {
       alert("Failed to Submit Code");
-      setOutput(prevOutput);
+      setOutput("-");
     }
   };
 
