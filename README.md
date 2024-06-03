@@ -4,6 +4,8 @@ App link: https://datacurve-takehome-hitanshu.vercel.app/
 
 Backend API link: https://datacurvetakehome-production.up.railway.app/docs#
 
+Sorry for adding these links late, I had trouble hosting the frontend
+
 ## Usage
 
 To access the site, go to the link pasted above.
