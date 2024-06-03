@@ -1,4 +1,6 @@
+fastapi
+uvicorn
+sqlalchemy
+pymysql
+dotenv
 boto3
-pandas
-scipy
-numpy
