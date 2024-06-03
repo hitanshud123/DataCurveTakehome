@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .output {
   max-height: 92vh;
 }

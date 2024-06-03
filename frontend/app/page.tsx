@@ -1,67 +1,68 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import CodeEditor from './components/codeEditor';
-import OutputPane from './components/outputPane';
-import runCode, { CodeOutput } from './api/runCode';
-import submitCode from './api/submitCode';
+import CodeEditor from "./components/codeEditor";
+import OutputPane from "./components/outputPane";
+import runCode, { CodeOutput } from "./api/runCode";
+import submitCode from "./api/submitCode";
 
 const Home: React.FC = () => {
-  const STARTERCODE = "print('Hello World!')"
+  const STARTERCODE = "print('Hello World!')";
   const [code, setCode] = useState<string>(STARTERCODE);
-  const [output, setOutput] = useState<string>('-');
+  const [output, setOutput] = useState<string>("-");
 
   const handleCodeChange = (newValue: string | undefined) => {
     if (newValue) {
-        setCode(newValue);
-        console.log(code)
+      setCode(newValue);
+      console.log(code);
     }
   };
 
   const handleRunCode = async () => {
-    setOutput("Running...")
+    setOutput("Running...");
     try {
-      const res = await runCode(code) 
+      const res = await runCode(code);
       if (res.retval != 0) {
-        setOutput(res.stdout + res.stderr)
+        setOutput(res.stdout + res.stderr);
       } else {
-        setOutput(res.stdout)
+        setOutput(res.stdout);
       }
     } catch {
-      alert("Failed to Run Code")
-      setOutput("-")
+      alert("Failed to Run Code");
+      setOutput("-");
     }
-  }
+  };
 
   const handleSubmit = async () => {
-    const prevOutput = output
-    setOutput("Running...")
+    const prevOutput = output;
+    setOutput("Running...");
     try {
-      const res = await runCode(code) 
+      const res = await runCode(code);
       if (res.retval != 0) {
-        setOutput(res.stdout + res.stderr)
+        setOutput(res.stdout + res.stderr);
+        alert("Code Has Errors");
       } else {
-        setOutput(res.stdout)
+        setOutput(res.stdout);
+        await submitCode(code, output);
+        alert("Code Submitted!!");
       }
-      await submitCode(code, output)
-      alert("Code Submitted!!")
     } catch {
-      alert("Failed to Submit Code")
-      setOutput(prevOutput)
+      alert("Failed to Submit Code");
+      setOutput(prevOutput);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gray-950 text-white flex flex-col items-center p-4">
       <div className="flex justify-center mb-2">
-        <button 
+        <button
           className="bg-gray-900 hover:bg-gray-800 text-white py-2 px-4 mx-2 rounded"
           onClick={() => handleRunCode()}
         >
           Run Code
         </button>
-        <button 
+        <button
           className="bg-gray-900 hover:bg-gray-800 text-white py-2 px-4 mx-2 mr-7 rounded"
           onClick={() => handleSubmit()}
         >
@@ -71,17 +72,13 @@ const Home: React.FC = () => {
 
       <div className="output flex flex-col md:flex-row w-full flex-1">
         <div className="md:w-1/2 m-1 bg-gray-800 p-2 rounded">
-          <CodeEditor
-            code={code}
-            handleCodeChange={handleCodeChange}
-          />
+          <CodeEditor code={code} handleCodeChange={handleCodeChange} />
         </div>
         <div className="md:w-1/2  bg-gray-800 p-2 m-1 rounded overflow-auto">
-          <OutputPane output={output}/>
+          <OutputPane output={output} />
         </div>
       </div>
     </div>
-
   );
 };
 

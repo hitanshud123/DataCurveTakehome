@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+
 class Submission(BaseModel):
     code: str
     output: str
@@ -15,6 +16,7 @@ class CodeOutput(BaseModel):
     stdout: str
     stderr: str
     retval: int
+
 
 class CodeInput(BaseModel):
     code: str
