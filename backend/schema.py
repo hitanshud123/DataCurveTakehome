@@ -18,6 +18,3 @@ class Submission(Base):
     code = Column(Text)
     output = Column(Text)
     userid = Column(Integer, ForeignKey("users.id"))
-
-
-
