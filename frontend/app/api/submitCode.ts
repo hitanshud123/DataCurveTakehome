@@ -1,7 +1,8 @@
+import { API_URL } from "./baseUrl";
 
 export default async function submitCode(code: string, output: string)  {
     try {
-        const res = await fetch('http://127.0.0.1:8000/submission/', {
+        const res = await fetch(API_URL + 'submission/', {
         method: 'POST',
         headers: {
             'content-type': 'application/json;charset=UTF-8',

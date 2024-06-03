@@ -34,7 +34,9 @@ def get_db():
     
 db_dependency = Annotated[Session, Depends(get_db)]
 
-lambda_client = boto3.client('lambda', region_name='us-east-1')
+lambda_client = boto3.client('lambda', region_name='us-east-1', 
+                             aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"), 
+                             aws_secret_access_key=os.getenv("AWS_SECREt_ACCESS_KEY"))
 
 ## Run Code
 def run_code(code: str) -> str:

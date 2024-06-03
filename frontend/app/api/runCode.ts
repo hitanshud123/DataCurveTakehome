@@ -1,3 +1,5 @@
+import { API_URL } from "./baseUrl";
+
 export interface CodeOutput {
     stdout: string;
     stderr: string;
@@ -6,7 +8,7 @@ export interface CodeOutput {
 
 export default async function runCode(code: string): Promise<CodeOutput>  {
     try {
-        const res = await fetch('http://127.0.0.1:8000/run-code/', {
+        const res = await fetch(API_URL + 'run-code/', {
         method: 'POST',
         headers: {
             'content-type': 'application/json;charset=UTF-8',
