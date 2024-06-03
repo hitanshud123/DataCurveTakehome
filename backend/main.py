@@ -42,18 +42,6 @@ lambda_client = boto3.client(
 
 
 ## Run Code
-def run_code(code: str) -> str:
-    code_file = f"/tmp/{uuid.uuid4()}.py"
-    with open(code_file, "w") as file:
-        file.write(code)
-
-    result = subprocess.run(["python3", code_file], capture_output=True, text=True)
-
-    os.remove(code_file)
-
-    return result
-
-
 @app.post(
     "/run-code/",
     response_model=models.CodeOutput,
