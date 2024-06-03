@@ -1,7 +1,10 @@
 # DataCurve - Python Code Execution Site
 
-App link: = https://datacurve-takehome-hitanshu.vercel.app/
+App link: https://datacurve-takehome-hitanshu.vercel.app/
+
 Backend API link: https://datacurvetakehome-production.up.railway.app/docs#
+
+Sorry for adding these links late, I had trouble hosting the frontend
 
 ## Usage
 
@@ -18,6 +21,7 @@ I have created an execution environment inside of AWS Lambda. When a user runs t
 - **Frontend**: React, Next.js, Tailwind, TypeScript, Monaco Code Editor
 - **Backend**: FastAPI, Docker, AWS Lambda Functions
 - **Database**: MySQL (hosted on Railway)
+  - The database has an extra table for Users. I added this because I would like to extend this project by adding users in the future!
 
 ## File Structure
 
